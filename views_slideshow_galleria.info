@@ -1,0 +1,7 @@
+; $Id$
+
+name = Views Slideshow: Galleria
+description = Provides integration between the Galleria plugin and Views Slideshow.
+core = 6.x
+package = Views
+dependencies[] = views_slideshow
