@@ -14,7 +14,7 @@ function template_preprocess_views_slideshow_galleria(&$vars) {
   $vars['images'] = array();
 
   // Strip all images from the $rows created by the original view query.
-  foreach($vars['rows'] as $item) {
+  foreach($vars['rows'] as $id => $item) {
     preg_match('@(<\s*img\s+[^>]*>)@i', $item, $matches);
     if ($image = $matches[1]) {
       // We need to add a URL to 'longdesc', as required by the plugin.
@@ -31,10 +31,10 @@ function template_preprocess_views_slideshow_galleria(&$vars) {
       }
 
       // Add the URL to the image's longdesc tag.
-      $image = preg_replace('@img\s+@i', 'img longdesc="'. $url .'" ', $image);
+      $vars['rows'][$id] = preg_replace('@img\s+@i', 'img longdesc="'. $url .'" ', $vars['rows'][$id]);
 
       // Add the image to our image array to display.
-      $vars['images'][] = $image;
+      $vars['images'][$id] = $image;
     }
   }
 
@@ -53,7 +53,7 @@ function _views_slideshow_galleria_add_js($options, $id) {
   $drupal_path = drupal_get_path('module', 'views_slideshow_galleria') . '/themes';
   drupal_add_js($drupal_path .'/js/views_slideshow_galleria.js');
 
-  if ($options['history']) {
+  if ($options['advanced']['history']) {
     drupal_add_js($path .'/plugins/galleria.history.js');
   }
 
@@ -61,14 +61,14 @@ function _views_slideshow_galleria_add_js($options, $id) {
     'theme' => check_plain($options['theme']),
     'carousel' => $options['carousel'] ? TRUE : 0,
     'carousel_speed' => (integer)$options['carousel_speed'],
-    'data_image_selector' => check_plain($options['data_image_selector']),
-    'data_source' => check_plain($options['data_source']),
-    'data_type' => check_plain($options['data_type']),
-    'debug' => $options['debug'] ? TRUE : 0,
+    'data_image_selector' => check_plain($options['advanced']['data_image_selector']),
+    'data_source' => check_plain($options['advanced']['data_source']),
+    'data_type' => check_plain($options['advanced']['data_type']),
+    'debug' => $options['advanced']['debug'] ? TRUE : 0,
     'image_crop' => $options['image_crop'] ? TRUE : 0,
     'image_margin' => (integer)$options['image_margin'],
     'image_position' => check_plain($options['image_position']),
-    'keep_source' => $options['keep_source'] ? TRUE : 0,
+    'keep_source' => $options['advanced']['keep_source'] ? TRUE : 0,
     'popup_links' => $options['popup_links'] ? TRUE : 0,
     'queue' => $options['queue'] ? TRUE : 0,
     'show' => (integer)$options['show'],
@@ -79,18 +79,19 @@ function _views_slideshow_galleria_add_js($options, $id) {
   );
 
   // Set themeURL to the path to the JS theme file for the galleria.
-  if ($options['custom_theme'] && $options['theme_path']) {
-    $settings['theme'] = check_plain($options['custom_theme']);
-    $settings['themeURL'] = url($options['theme_path']);
+  if ($options['custom_theme_options']['custom_theme'] && $options['custom_theme_options']['theme_path']) {
+    $settings['theme'] = check_plain($options['custom_theme_options']['custom_theme']);
+    $settings['themeURL'] = url($options['custom_theme_options']['theme_path']);
   }
-  else if ($settings['theme'] && !$settings['theme_path']) {
+  else if ($settings['theme'] && !$settings['custom_theme_options']['theme_path']) {
     $settings['themeURL'] = url($path ."/themes/{$settings['theme']}/galleria.{$settings['theme']}.js");
   }
-  else if ($settings['theme_path']) {
-    $settings['themeURL'] = url($options['theme_path']);
+  else if ($settings['custom_theme_options']['theme_path']) {
+    // We'll allow a custom theme path to override the default.
+    $settings['themeURL'] = url($options['custom_theme_options']['theme_path']);
   }
   else {
-    // No theme specified. Hopefully folks know what they're doing...
+    // No theme specified; we assume they're using a Drupal theme for styling.
     $settings['themeURL'] = FALSE;
   }
 
@@ -100,11 +101,11 @@ function _views_slideshow_galleria_add_js($options, $id) {
   // Carousel_steps is 'auto' or an integer.
   $settings['carousel_steps'] = ($options['carousel_steps'] == 'auto') ? 'auto' : (integer)$options['carousel_steps'];
 
-  if ($options['data_config']) {
-    $settings['data_config'] = check_plain($options['data_config']);
+  if ($options['advanced']['data_config']) {
+    $settings['data_config'] = check_plain($options['advanced']['data_config']);
   }
-  if ($options['extend']) {
-    $settings['extend'] = check_plain($options['extend']);
+  if ($options['advanced']['extend']) {
+    $settings['extend'] = check_plain($options['advanced']['extend']);
   }
 
   // Height is 'auto' or an integer.
@@ -119,13 +120,13 @@ function _views_slideshow_galleria_add_js($options, $id) {
     $settings['max_scale_ratio'] = (integer)$options['max_scale_ratio'];
   }
 
-  if ($options['on_image']) {
-    $settings['on_image'] = $options['on_image'];
+  if ($options['advanced']['on_image']) {
+    $settings['on_image'] = $options['advanced']['on_image'];
   }
 
   $settings['preload'] = ($options['preload'] == 'auto') ? 'auto' : (integer)$options['preload'];
 
-  $settings['thumb_quality'] = ($options['thumb_quality'] == 'auto') ? 'auto' : (integer)$options['thumb_quality'];
+  $settings['thumb_quality'] = ($options['advanced']['thumb_quality'] == 'auto') ? 'auto' : (integer)$options['advanced']['thumb_quality'];
 
   $settings['thumbnails'] = ($options['thumbnails'] == 'empty') ? 'empty' : (integer)$options['thumbnails'];
 

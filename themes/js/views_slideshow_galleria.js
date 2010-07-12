@@ -5,7 +5,6 @@
  *  This will initiate any Galleria browsers we have set up.
  */
 
-
 (function ($) {
   Drupal.behaviors.viewsSlideshowGalleria = function (context) {
     for (id in Drupal.settings.viewsSlideshowGalleria) {

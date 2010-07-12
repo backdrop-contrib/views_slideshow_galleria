@@ -103,7 +103,7 @@ function views_slideshow_galleria_variable_default($name = NULL) {
 
   if (!isset($defaults)) {
     $defaults = array(
-      'history' => TRUE,
+      'history' => 0,
       'theme' => 'classic',
       'custom_theme' => '',
       'theme_path' => '',
