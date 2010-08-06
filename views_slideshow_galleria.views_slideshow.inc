@@ -70,7 +70,6 @@ function views_slideshow_galleria_views_slideshow_option_definition() {
  *  Implements hook_views_slideshow_options_form().
  */
 function views_slideshow_galleria_views_slideshow_options_form(&$form, &$form_state, &$view) {
-dpm($view->options);
   // Create the form elements for our Galleria view options.
   $form['views_slideshow_galleria'] = array(
     '#type' => 'fieldset',
