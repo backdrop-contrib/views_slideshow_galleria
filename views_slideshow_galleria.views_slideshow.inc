@@ -24,39 +24,43 @@ function views_slideshow_galleria_views_slideshow_option_definition() {
   // Set our default options.
   $options['views_slideshow_galleria'] = array(
     'default' => array(
-      'history' => views_slideshow_galleria_variable_get('history'),
       'theme' => views_slideshow_galleria_variable_get('theme'),
-      'custom_theme' => views_slideshow_galleria_variable_get('custom_theme'),
-      'theme_path' => views_slideshow_galleria_variable_get('theme_path'),
+      'custom_theme_options' => array(
+        'custom_theme' => views_slideshow_galleria_variable_get('custom_theme'),
+        'theme_path' => views_slideshow_galleria_variable_get('theme_path'),
+      ),
       'autoplay' => views_slideshow_galleria_variable_get('autoplay'),
       'autoplay_ms' => views_slideshow_galleria_variable_get('autoplay_ms'),
       'carousel' => views_slideshow_galleria_variable_get('carousel'),
       'carousel_follow' => views_slideshow_galleria_variable_get('carousel_follow'),
       'carousel_speed' => views_slideshow_galleria_variable_get('carousel_speed'),
       'carousel_steps' => views_slideshow_galleria_variable_get('carousel_steps'),
-      'data_config' => views_slideshow_galleria_variable_get('data_config'),
-      'data_image_selector' => views_slideshow_galleria_variable_get('data_image_selector'),
-      'data_source' => views_slideshow_galleria_variable_get('data_source'),
-      'data_type' => views_slideshow_galleria_variable_get('data_type'),
-      'debug' => views_slideshow_galleria_variable_get('debug'),
-      'extend' => views_slideshow_galleria_variable_get('extend'),
       'height' => views_slideshow_galleria_variable_get('height'),
       'image_crop' => views_slideshow_galleria_variable_get('image_crop'),
       'image_margin' => views_slideshow_galleria_variable_get('image_margin'),
       'image_position' => views_slideshow_galleria_variable_get('image_position'),
-      'keep_source' => views_slideshow_galleria_variable_get('keep_source'),
       'max_scale_ratio' => views_slideshow_galleria_variable_get('max_scale_ratio'),
-      'on_image' => views_slideshow_galleria_variable_get('on_image'),
       'popup_links' => views_slideshow_galleria_variable_get('popup_links'),
       'preload' => views_slideshow_galleria_variable_get('preload'),
       'queue' => views_slideshow_galleria_variable_get('queue'),
       'show' => views_slideshow_galleria_variable_get('show'),
       'thumb_crop' => views_slideshow_galleria_variable_get('thumb_crop'),
       'thumb_margin' => views_slideshow_galleria_variable_get('thumb_margin'),
-      'thumb_quality' => views_slideshow_galleria_variable_get('thumb_quality'),
       'thumbnails' => views_slideshow_galleria_variable_get('thumbnails'),
       'transition' => views_slideshow_galleria_variable_get('transition'),
       'transition_speed' => views_slideshow_galleria_variable_get('transition_speed'),
+      'advanced' => array(
+        'history' => views_slideshow_galleria_variable_get('history'),
+        'data_config' => views_slideshow_galleria_variable_get('data_config'),
+        'data_image_selector' => views_slideshow_galleria_variable_get('data_image_selector'),
+        'data_source' => views_slideshow_galleria_variable_get('data_source'),
+        'data_type' => views_slideshow_galleria_variable_get('data_type'),
+        'debug' => views_slideshow_galleria_variable_get('debug'),
+        'extend' => views_slideshow_galleria_variable_get('extend'),
+        'keep_source' => views_slideshow_galleria_variable_get('keep_source'),
+        'on_image' => views_slideshow_galleria_variable_get('on_image'),
+        'thumb_quality' => views_slideshow_galleria_variable_get('thumb_quality'),
+      ),
     ),
   );
   return $options;
@@ -66,6 +70,7 @@ function views_slideshow_galleria_views_slideshow_option_definition() {
  *  Implements hook_views_slideshow_options_form().
  */
 function views_slideshow_galleria_views_slideshow_options_form(&$form, &$form_state, &$view) {
+dpm($view->options);
   // Create the form elements for our Galleria view options.
   $form['views_slideshow_galleria'] = array(
     '#type' => 'fieldset',
@@ -98,13 +103,13 @@ function views_slideshow_galleria_views_slideshow_options_form(&$form, &$form_st
     '#type' => 'textfield',
     '#title' => t('Custom theme'),
     '#description' => t('Leave this blank unless you wish to override the theme used by the plugin. You should specify the name of the custom theme here, and enter its path below. See the !theme_api for how to create your own Galleria JavaScript themes.', array('!theme_api' => l(t('Galleria JavaScript theme API'), 'http://github.com/aino/galleria/blob/master/docs/theme_api.rst', array('attributes' => array('target' => '_blank'))), '%custom' => t('<Custom>'))),
-    '#default_value' => $view->options['views_slideshow_galleria']['custom_theme'],
+    '#default_value' => $view->options['views_slideshow_galleria']['custom_theme_options']['custom_theme'],
   );
   $form['views_slideshow_galleria']['custom_theme_options']['theme_path'] = array(
     '#type' => 'textfield',
     '#title' => t('Custom theme path'),
     '#description' => t("Leave this blank unless you're overriding the theme. See the !theme_api for how to create your own Galleria JavaScript themes.", array('!theme_api' => l(t('Galleria JavaScript theme API'), 'http://github.com/aino/galleria/blob/master/docs/theme_api.rst', array('attributes' => array('target' => '_blank'))))),
-    '#default_value' => $view->options['views_slideshow_galleria']['theme_path'],
+    '#default_value' => $view->options['views_slideshow_galleria']['custom_theme_options']['theme_path'],
   );
   $form['views_slideshow_galleria']['autoplay'] = array(
     '#type' => 'checkbox',
@@ -251,7 +256,7 @@ function views_slideshow_galleria_views_slideshow_options_form(&$form, &$form_st
     '#type' => 'checkbox',
     '#title' => t('History permalinks'),
     '#description' => t('Add permalinks to all images in the gallery.'),
-    '#default_value' => $view->options['views_slideshow_galleria']['history'],
+    '#default_value' => $view->options['views_slideshow_galleria']['advanced']['history'],
   );
   $form['views_slideshow_galleria']['advanced']['data_config'] = array(
     '#type' => 'textarea',
