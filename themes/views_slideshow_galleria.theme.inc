@@ -29,8 +29,9 @@ function template_preprocess_views_slideshow_galleria(&$vars) {
         }
       }
 
-      // Add the URL to the image's longdesc tag.
-      $vars['rows'][$id] = l($image, $url, array('html' => TRUE));
+      // Ensure the link for the original image is preserved.
+      // $url has already been url'ized.
+      $vars['rows'][$id] = '<a href="'. $url .'">'. $image .'</a>';
 
       // Add the image to our image array to display.
       $vars['images'][$id] = $image;
