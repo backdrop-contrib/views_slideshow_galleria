@@ -17,7 +17,6 @@ function template_preprocess_views_slideshow_galleria(&$vars) {
   foreach($vars['rows'] as $id => $item) {
     preg_match('@(<\s*img\s+[^>]*>)@i', $item, $matches);
     if ($image = $matches[1]) {
-      // We need to add a URL to 'longdesc', as required by the plugin.
       // If our image is in an anchor tag, use its URL.
       preg_match('@<\s*a\s+href\s*=\s*"\s*([^"]+)\s*"[^>]*>[^<]*'. preg_quote($image) .'[^<]*<\s*/a\s*>@i', $item, $urls);
       if (!($url = $urls[1])) {
@@ -31,7 +30,7 @@ function template_preprocess_views_slideshow_galleria(&$vars) {
       }
 
       // Add the URL to the image's longdesc tag.
-      $vars['rows'][$id] = preg_replace('@img\s+@i', 'img longdesc="'. $url .'" ', $vars['rows'][$id]);
+      $vars['rows'][$id] = l($image, $url, array('html' => TRUE));
 
       // Add the image to our image array to display.
       $vars['images'][$id] = $image;
