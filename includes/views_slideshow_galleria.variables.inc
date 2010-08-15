@@ -135,6 +135,7 @@ function views_slideshow_galleria_variable_default($name = NULL) {
       'thumbnails' => TRUE,
       'transition' => 'fade',
       'transition_speed' => 400,
+      'avoid_flash_of_content' => TRUE,
     );
   }
 

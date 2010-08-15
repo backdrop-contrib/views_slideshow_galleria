@@ -60,6 +60,7 @@ function views_slideshow_galleria_views_slideshow_option_definition() {
         'keep_source' => views_slideshow_galleria_variable_get('keep_source'),
         'on_image' => views_slideshow_galleria_variable_get('on_image'),
         'thumb_quality' => views_slideshow_galleria_variable_get('thumb_quality'),
+        'avoid_flash_of_content' => views_slideshow_galleria_variable_get('avoid_flash_of_content'),
       ),
     ),
   );
@@ -322,5 +323,11 @@ function views_slideshow_galleria_views_slideshow_options_form(&$form, &$form_st
     '#description' => t("Defines if and how IE should use bicubic image rendering for thumbnails.<ul><li>%auto uses high quality if image scaling is moderate.</li><li>%false will not use high quality (better performance).</li><li>%true will force high quality renedring (can slow down performance)</li></ul>", array('%auto' => t('Auto'), '%false' => t('False'), '%true' => t('True'))),
     '#default_value' => $view->options['views_slideshow_galleria']['advanced']['thumb_quality'],
     '#options' => $options,
+  );
+  $form['views_slideshow_galleria']['advanced']['avoid_flash_of_content'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Avoid flash of content'),
+    '#description' => t('If checked, then the images of the Galleria slide show will be hidden by JavaScript in the page header, so that there is no flash of content on the page load.'),
+    '#default_value' => $view->options['views_slideshow_galleria']['advanced']['avoid_flash_of_content'],
   );
 }

@@ -13,6 +13,8 @@ function template_preprocess_views_slideshow_galleria(&$vars) {
   // Initialize our $images array.
   $vars['images'] = array();
 
+  $vars['original_rows'] = $vars['rows'];
+
   // Strip all images from the $rows created by the original view query.
   foreach($vars['rows'] as $id => $item) {
     preg_match('@(<\s*img\s+[^>]*>)@i', $item, $matches);
@@ -41,6 +43,11 @@ function template_preprocess_views_slideshow_galleria(&$vars) {
   $options = $vars['options']['views_slideshow_galleria'];
 
   _views_slideshow_galleria_add_js($options, 'views-slideshow-galleria-images-'. $vars['id']);
+
+  // Avoid flash of content.
+  if ($options['advanced']['avoid_flash_of_content']) {
+    drupal_add_js("document.write('<style>#views-slideshow-galleria-images-{$vars['id']} img {display:none;}<\/style>');", 'inline');
+  }
 }
 
 function _views_slideshow_galleria_add_js($options, $id) {
