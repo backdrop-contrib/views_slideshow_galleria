@@ -12,7 +12,7 @@
         var settings = Drupal.settings.viewsSlideshowGalleria[$(this).attr('id')];
 
         if (settings['themeURL']) {
-          Galleria.loadTheme(settings['themeURL']);
+//           Galleria.loadTheme(settings['themeURL']);
         }
 
         // I get an error if I just use $(this)... @WTF?

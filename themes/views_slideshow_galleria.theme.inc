@@ -59,6 +59,13 @@ function template_preprocess_views_slideshow_galleria(&$vars) {
 }
 
 function _views_slideshow_galleria_add_js($options, $id) {
+  static $loaded_themes;
+
+  // Keep track of which Galleria plugin JS themes have already been loaded.
+  if (!isset($loaded_themes)) {
+    $loaded_themes = array();
+  }
+
   // Find the path to our plugin.
   $path = views_slideshow_galleria_path();
 
@@ -108,6 +115,11 @@ function _views_slideshow_galleria_add_js($options, $id) {
   else {
     // No theme specified; we assume they're using a Drupal theme for styling.
     $settings['themeURL'] = FALSE;
+  }
+
+  if ($settings['themeURL'] && !isset($loaded_themes[$settings['themeURL']])) {
+    drupal_add_js('Galleria.loadTheme("'. $settings['themeURL'] .'")', 'inline');
+    $loaded_themes[$settings['themeURL']] = TRUE;
   }
 
   // Autoplay is FALSE or the number of MS.
