@@ -19,7 +19,7 @@
       <h3><?php print $title; ?></h3>
     <?php endif; ?>
 
-    <div id="views-slideshow-galleria-images-<?php print $id; ?>" class="views-slideshow-galleria-images galleria">
+    <div id="views-slideshow-galleria-images-<?php print $id; ?>" class="<?php print $classes; ?>">
       <?php foreach ($rows as $row): ?>
        <?php print $row ."\n"; ?>
       <?php endforeach; ?>

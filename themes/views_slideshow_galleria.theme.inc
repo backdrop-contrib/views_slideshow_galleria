@@ -44,10 +44,18 @@ function template_preprocess_views_slideshow_galleria(&$vars) {
 
   _views_slideshow_galleria_add_js($options, 'views-slideshow-galleria-images-'. $vars['id']);
 
+  $vars['class'] = array(
+    'views-slideshow-galleria-images',
+    'galleria',
+  );
+
   // Avoid flash of content.
   if ($options['advanced']['avoid_flash_of_content']) {
-    drupal_add_js("document.write('<style>#views-slideshow-galleria-images-{$vars['id']} img {display:none;}<\/style>');", 'inline');
+    $vars['class'][] = 'hidden';
   }
+
+  $vars['classes'] = implode(' ', $vars['class']);
+  drupal_add_css(drupal_get_path('module', 'views_slideshow_galleria') .'/themes/css/views_slideshow_galleria.css');
 }
 
 function _views_slideshow_galleria_add_js($options, $id) {
