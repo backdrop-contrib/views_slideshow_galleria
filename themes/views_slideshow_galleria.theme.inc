@@ -20,6 +20,8 @@ function template_preprocess_views_slideshow_galleria(&$vars) {
     preg_match('@(<\s*img\s+[^>]*>)@i', $item, $matches);
     if ($image = $matches[1]) {
       // If our image is in an anchor tag, use its URL.
+      // Note that we'll be assigning the value of $url during the comparison.
+      // @see http://www.php.net/manual/en/language.operators.assignment.php.
       preg_match('@<\s*a\s+href\s*=\s*"\s*([^"]+)\s*"[^>]*>[^<]*'. preg_quote($image) .'[^<]*<\s*/a\s*>@i', $item, $urls);
       if (!($url = $urls[1])) {
         // Otherwise link to the original image.
