@@ -5,3 +5,4 @@ description = Provides integration between the Galleria plugin and Views Slidesh
 core = 6.x
 package = Views
 dependencies[] = views_slideshow
+dependencies[] = jquery_update
