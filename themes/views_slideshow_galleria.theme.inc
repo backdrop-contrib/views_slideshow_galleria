@@ -107,7 +107,7 @@ function _views_slideshow_galleria_add_js($options, $id) {
     $settings['themeURL'] = base_path() . '/'. $options['custom_theme_options']['theme_path'];
   }
   else if ($settings['theme'] && !$settings['custom_theme_options']['theme_path']) {
-    $settings['themeURL'] = base_path() . '/'. $path ."/themes/{$settings['theme']}/galleria.{$settings['theme']}.js";
+    $settings['themeURL'] = base_path() . $path ."/themes/{$settings['theme']}/galleria.{$settings['theme']}.js";
   }
   else if ($settings['custom_theme_options']['theme_path']) {
     // We'll allow a custom theme path to override the default.
