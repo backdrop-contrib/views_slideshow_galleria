@@ -1,7 +1,5 @@
 name = Views Slideshow: Galleria
 description = Provides integration between the Galleria plugin and Views Slideshow.
-core = 6.x
+core = 7.x
 package = Views
 dependencies[] = views_slideshow
-dependencies[] = jquery_update
-dependencies[] = libraries

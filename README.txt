@@ -24,7 +24,6 @@ gallery designs, suitable for any project.
    - Views from http://drupal.org/project/views
    - Views Slideshow from http://drupal.org/project/views_slideshow
    - Libraries from http://drupal.org/project/libraries
-   - jQuery Update (6.x-2.0-alpha1 or later) from http://drupal.org/project/jquery_update
 3. Download the Galleria jQuery plugin from http://galleria.io/download.
 4. Extract the contents of that archive into /sites/all/libraries.
 6. Remove the version number from the filenames so they read galleria.js and galleria.min.js.

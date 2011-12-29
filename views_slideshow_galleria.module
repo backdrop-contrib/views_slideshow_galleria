@@ -11,7 +11,7 @@
 function views_slideshow_galleria_theme() {
   return array(
     'views_slideshow_galleria_main_frame' => array(
-      'arguments' => array('vss_id' => NULL, 'view' => NULL, 'settings' => NULL, 'rows' => NULL),
+      'variables' => array('vss_id' => NULL, 'view' => NULL, 'settings' => NULL, 'rows' => NULL),
       'template' => 'views-slideshow-galleria-main-frame',
       'file' => 'views_slideshow_galleria.theme.inc',
     ),

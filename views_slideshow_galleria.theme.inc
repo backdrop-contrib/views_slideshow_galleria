@@ -22,10 +22,10 @@ function template_preprocess_views_slideshow_galleria_main_frame(&$vars) {
       // Note that we'll be assigning the value of $url during the comparison.
       // @see http://www.php.net/manual/en/language.operators.assignment.php.
       preg_match('@<\s*a\s+href\s*=\s*"\s*([^"]+)\s*"[^>]*>[^<]*'. preg_quote($image) .'[^<]*<\s*/a\s*>@i', $item, $urls);
-      if (!($url = $urls[1])) {
+      if (!($url = @$urls[1])) {
         // Otherwise link to the original image.
         preg_match('@src\s*=\s*"([^"]+)"@i', $image, $urls);
-        if (!($url = $urls[1])) {
+        if (!($url = @$urls[1])) {
           // If we get this far, there are probably more serious problems.
           // But for now, we'll go to the front page instead.
           $url = url('<front>');
@@ -43,17 +43,12 @@ function template_preprocess_views_slideshow_galleria_main_frame(&$vars) {
 
   _views_slideshow_galleria_add_js($vars['settings'], 'views_slideshow_galleria_main_'. $vars['vss_id']);
 
-  $vars['class'] = array(
-    'views-slideshow-galleria-images',
-    'galleria',
-  );
-
-  // Avoid flash of content.
-  if ($options['advanced']['avoid_flash_of_content']) {
-    $vars['class'][] = 'hidden';
+  $vars['classes_array'][] = 'views-slideshow-galleria-images';
+  $vars['classes_array'][] = 'galleria';
+  if ($vars['settings']['advanced']['avoid_flash_of_content']) {
+    $vars['classes_array'][] = 'hidden';
   }
 
-  $vars['classes'] = implode(' ', $vars['class']);
   drupal_add_css(drupal_get_path('module', 'views_slideshow_galleria') .'/views_slideshow_galleria.css');
 }
 
@@ -112,10 +107,10 @@ function _views_slideshow_galleria_add_js($options, $vss_id) {
     'lightbox' => (bool)$lightbox,
     'lightboxFadeSpeed' => (int)check_plain($lightbox_fade_speed),
     'lightboxTransitionSpeed' => (int)check_plain($lightbox_transition_speed),
-    'maxScaleRatio' => (int)$maxScaleRatio,
-    'minScaleRatio' => (int)$minScaleRatio,
-    'overlayOpacity' => (int)$overlayOpacity,
-    'overlayBackground' => check_plain($overlayBackground),
+    'maxScaleRatio' => (int)$max_scale_ratio,
+    'minScaleRatio' => (int)$min_scale_ratio,
+    'overlayOpacity' => (int)$overlay_opacity,
+    'overlayBackground' => check_plain($overlay_background),
     'pauseOnInteraction' => (bool)$pause_on_interaction,
     'popupLlinks' => (bool)$popup_links,
     'preload' => ($preload == 'all') ? 'all' : (int)$preload,
