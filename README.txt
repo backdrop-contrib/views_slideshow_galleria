@@ -6,7 +6,7 @@
 Integrating Galleria with Views Slideshow.
 
 This module will display a view of images using the Galleria jQuery plugin
-available from http://galleria.aino.se/.
+available from http://galleria.io.
 
 Galleria
 — A JavaScript gallery for the Fastidious
@@ -19,15 +19,14 @@ gallery designs, suitable for any project.
  Installation
 ==============
 
-1. Extract the contents of the project into your modules directory, probably at
-   /sites/all/modules/views_slideshow_galleria.
-2. Also install Views and Views Slideshow (available from
-   http://drupal.org/project/views and http://drupal.org/project/views_slideshow
-   respectively).
-3. Download the Galleria jQuery plugin from
-   http://github.com/aino/galleria/archives/master.
+1. Extract the contents of the project into /sites/all/modules..
+2. Also download and install
+   - Views from http://drupal.org/project/views
+   - Views Slideshow from http://drupal.org/project/views_slideshow
+   - Libraries from http://drupal.org/project/libraries
+   - jQuery Update (6.x-2.0-alpha1 or later) from http://drupal.org/project/jquery_update
+3. Download the Galleria jQuery plugin from http://galleria.io/download.
 4. Extract the contents of that archive into /sites/all/libraries.
-   You may optionally install that to another folder, but will need to then
-   specify the new location at /admin/build/views/views_slideshow_galleria.
+6. Remove the version number from the filenames so they read galleria.js and galleria.min.js.
 5. Create a new View with images, using 'Slideshow' for the 'Style', and
    'Galleria' for the 'Slideshow mode' when configuring the style.
