@@ -41,7 +41,7 @@ function template_preprocess_views_slideshow_galleria_main_frame(&$vars) {
     }
   }
 
-  _views_slideshow_galleria_add_js($vars['settings'], 'views_slideshow_galleria_main_'. $vars['vss_id']);
+  _views_slideshow_galleria_add_js($vars['settings'], 'views-slideshow-galleria-images-'. $vars['id']);
 
   $vars['classes_array'][] = 'views-slideshow-galleria-images';
   $vars['classes_array'][] = 'galleria';
