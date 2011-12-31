@@ -463,6 +463,12 @@ function views_slideshow_galleria_views_slideshow_slideshow_type_form(&$form, &$
     '#description' => t('If checked, then the images of the Galleria slide show will be hidden by JavaScript in the page header, so that there is no flash of content on the page load.'),
     '#default_value' => $view->options['views_slideshow_galleria']['advanced']['avoid_flash_of_content'],
   );
+  $form['views_slideshow_galleria']['advanced']['strip_images'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Strip images'),
+    '#description' => t('If checked, then the images will be stripped from the original view query. Disabling it can be useful to add rich HTML captions.'),
+    '#default_value' => $view->options['views_slideshow_galleria']['advanced']['strip_images'],
+  );
 }
 
 /**
@@ -529,6 +535,7 @@ function views_slideshow_galleria_views_slideshow_option_definition() {
       'transition_speed' => array('default' => 400),
       'width' => array('default' => 500),
       'avoid_flash_of_content' => array('default' => TRUE),
+      'strip_images' => array('default' => TRUE),
     ),
   );
   return $options;

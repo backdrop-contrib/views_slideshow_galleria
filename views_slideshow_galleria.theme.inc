@@ -9,32 +9,34 @@
  *  Process variables for views-galleria-main-frame.tpl.php.
  */
 function template_preprocess_views_slideshow_galleria_main_frame(&$vars) {
-  // Initialize our $images array.
-  $vars['images'] = array();
+  if ($vars['settings']['advanced']['strip_images']) {
+    // Initialize our $images array.
+    $vars['images'] = array();
 
-  $vars['original_rows'] = $vars['rows'];
+    $vars['original_rows'] = $vars['rows'];
 
-  // Strip all images from the $rows created by the original view query.
-  foreach($vars['rows'] as $id => $item) {
-    preg_match('@(<\s*img\s+[^>]*>)@i', $item, $matches);
-    if ($image = $matches[1]) {
-      // If our image is in an anchor tag, use its URL.
-      preg_match('@<\s*a\s+href\s*=\s*"\s*([^"]+)\s*"[^>]*>[^<]*'. preg_quote($image) .'[^<]*<\s*/a\s*>@i', $item, $urls);
-      if (isset($urls[1])) {
-        $url = $urls[1];
+    // Strip all images from the $rows created by the original view query.
+    foreach($vars['rows'] as $id => $item) {
+      preg_match('@(<\s*img\s+[^>]*>)@i', $item, $matches);
+      if ($image = $matches[1]) {
+        // If our image is in an anchor tag, use its URL.
+        preg_match('@<\s*a\s+href\s*=\s*"\s*([^"]+)\s*"[^>]*>[^<]*'. preg_quote($image) .'[^<]*<\s*/a\s*>@i', $item, $urls);
+        if (isset($urls[1])) {
+          $url = $urls[1];
+        }
+        else {
+          // Otherwise link to the original image or the front page instead.
+          preg_match('@src\s*=\s*"([^"]+)"@i', $image, $urls);
+          $url = isset($urls[1]) ? $urls[1] : url('<front>');
+        }
+
+        // Ensure the link for the original image is preserved.
+        // $url has already been url'ized.
+        $vars['rows'][$id] = '<a href="'. $url .'">'. $image .'</a>';
+
+        // Add the image to our image array to display.
+        $vars['images'][$id] = $image;
       }
-      else {
-        // Otherwise link to the original image or the front page instead.
-        preg_match('@src\s*=\s*"([^"]+)"@i', $image, $urls);
-        $url = isset($urls[1]) ? $urls[1] : url('<front>');
-      }
-
-      // Ensure the link for the original image is preserved.
-      // $url has already been url'ized.
-      $vars['rows'][$id] = '<a href="'. $url .'">'. $image .'</a>';
-
-      // Add the image to our image array to display.
-      $vars['images'][$id] = $image;
     }
   }
 
