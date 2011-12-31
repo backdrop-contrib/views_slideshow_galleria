@@ -55,7 +55,7 @@ function template_preprocess_views_slideshow_galleria_main_frame(&$vars) {
 /*
  * Helper function to build and pass Galleria settings to Drupal. 
  */
-function _views_slideshow_galleria_add_js($options, $vss_id) {
+function _views_slideshow_galleria_add_js($options, $id) {
   static $loaded_themes;
 
   // Keep track of which Galleria plugin JS themes have already been loaded.
@@ -157,5 +157,5 @@ function _views_slideshow_galleria_add_js($options, $vss_id) {
   }
 
   // Load Galleria settings.
-  drupal_add_js(array('viewsSlideshowGalleria' => array($vss_id => $settings)), 'setting');
+  drupal_add_js(array('viewsSlideshowGalleria' => array($id => $settings)), 'setting');
 }
