@@ -135,7 +135,7 @@ function _views_slideshow_galleria_add_js($options, $id) {
     $theme_path = base_path() . '/'. $custom_theme_path;
   }
   else {
-    $theme_path = libraries_get_path('galleria') ."/themes/{$theme}/galleria.{$theme}.js";
+    $theme_path = base_path() . libraries_get_path('galleria') ."/themes/{$theme}/galleria.{$theme}.js";
   }
 
   // Load the Galleria theme.
