@@ -108,7 +108,7 @@ function _views_slideshow_galleria_add_js($options, $id) {
     'lightboxTransitionSpeed' => (int)check_plain($lightbox_transition_speed),
     'maxScaleRatio' => (int)$max_scale_ratio,
     'minScaleRatio' => (int)$min_scale_ratio,
-    'overlayOpacity' => (int)$overlay_opacity,
+    'overlayOpacity' => (float)$overlay_opacity,
     'overlayBackground' => check_plain($overlay_background),
     'pauseOnInteraction' => (bool)$pause_on_interaction,
     'popupLlinks' => (bool)$popup_links,
