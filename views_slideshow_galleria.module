@@ -42,24 +42,18 @@ function views_slideshow_galleria_libraries_info() {
  *   The path to the Galleria library js file, or FALSE if not found.
  */
 function _views_slideshow_galleria_library_path() {
-  $galleria_path = libraries_get_path('galleria');
+  $library_path = libraries_get_path('galleria');
 
-  if (!empty($galleria_path)) {
+  if (!empty($library_path)) {
     // Attempt to use minified version of Galleria plugin.
-    if (file_exists($galleria_path . '/galleria.min.js')) {
-      $galleria_path .= '/galleria.min.js';
+    if ($galleria_path = array_shift(glob($library_path . '/galleria*.min.js'))) {
+      return $galleria_path;
     }
     // Otherwise use non-minified version if available.
-    elseif (file_exists($cycle_path . '/galleria.js')) {
-      $galleria_path .= '/galleria.js';
+    elseif ($galleria_path = array_shift(glob($library_path . '/galleria*.js'))) {
+      return $galleria_path;
     }
-    else {
-      $galleria_path = FALSE;
-    }
-  }
-  else {
-    $galleria_path = FALSE;
   }
 
-  return $galleria_path;
+  return FALSE;
 }

@@ -26,6 +26,5 @@ gallery designs, suitable for any project.
    - Libraries from http://drupal.org/project/libraries
 3. Download the Galleria jQuery plugin from http://galleria.io/download.
 4. Extract the contents of that archive into /sites/all/libraries.
-6. Remove the version number from the filenames so they read galleria.js and galleria.min.js.
 5. Create a new View with images, using 'Slideshow' for the 'Style', and
    'Galleria' for the 'Slideshow mode' when configuring the style.

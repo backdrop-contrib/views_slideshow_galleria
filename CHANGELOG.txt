@@ -1,5 +1,6 @@
 Views Slideshow: Galleria 7.x-3.x, xxxx-xx-xx
 -----------------------
+- #1437048 by sgabe: Added Handle version numbers in Galleria file paths.
 - #1443566 by carn1x: Fixed Theme path is wrong when using custom theme.
 - #1412824 by sgabe | mrupal: Fixed No 'Overlay opacity' when Lightbox is used.
 - #1399722 by gateone: Fixed Prepend base path to theme path.
