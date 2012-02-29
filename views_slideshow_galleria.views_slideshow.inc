@@ -485,19 +485,17 @@ function views_slideshow_galleria_views_slideshow_option_definition() {
       'carousel_speed' => array('default' => 200),
       'carousel_steps' => array('default' => 'auto'),
       'clicknext' => array('default' => FALSE),
-      'custom_theme' => array('default' => ''),
-      'custom_theme_path' => array('default' => ''),
-      'data_config' => array('default' => ''),
-      'data_selector' => array('default' => 'img'),
-      'data_source' => array('default' => ''),
-      'debug' => array('default' => TRUE),
+      'custom_theme_options' => array(
+        'contains' => array(
+          'custom_theme' => array('default' => ''),
+          'custom_theme_path' => array('default' => ''),
+        )
+      ),
       'easing' => array('default' => 'galleria'),
-      'extend' => array('default' => ''),
       'fullscreen_crop' => array('default' => ''),
       'fullscreen_double_tap' => array('default' => TRUE),
       'fullscreen_transition' => array('default' => ''),
       'height' => array('default' => 500),
-      'history' => array('default' => 0),
       'idle_mode' => array('default' => TRUE),
       'idle_time' => array('default' => 3000),
       'idle_speed' => array('default' => 200),
@@ -507,7 +505,6 @@ function views_slideshow_galleria_views_slideshow_option_definition() {
       'image_pan_smoothness' => array('default' => 12),
       'image_position' => array('default' => 'center'),
       'initial_transition' => array('default' => ''),
-      'keep_source' => array('default' => FALSE),
       'layer_follow' => array('default' => TRUE),
       'lightbox' => array('default' => FALSE),
       'lightbox_fade_speed' => array('default' => 200),
@@ -534,8 +531,19 @@ function views_slideshow_galleria_views_slideshow_option_definition() {
       'transition' => array('default' => 'fade'),
       'transition_speed' => array('default' => 400),
       'width' => array('default' => 500),
-      'avoid_flash_of_content' => array('default' => TRUE),
-      'strip_images' => array('default' => TRUE),
+      'advanced' => array(
+        'contains' => array(
+          'avoid_flash_of_content' => array('default' => TRUE),
+          'data_config' => array('default' => ''),
+          'data_selector' => array('default' => 'img'),
+          'data_source' => array('default' => ''),
+          'debug' => array('default' => TRUE),
+          'extend' => array('default' => ''),
+          'history' => array('default' => 0),
+          'keep_source' => array('default' => FALSE),
+          'strip_images' => array('default' => TRUE),
+        )
+      ),
     ),
   );
   return $options;
