@@ -71,7 +71,7 @@ function _views_slideshow_galleria_add_js($options, $id) {
   $galleria_path = _views_slideshow_galleria_library_path();
 
   // Load Galleria.
-  drupal_add_js($galleria_path);
+  drupal_add_js($galleria_path, array('group' => JS_LIBRARY));
   // Load our galleria js.
   drupal_add_js(drupal_get_path('module', 'views_slideshow_galleria') . '/views_slideshow_galleria.js');
 
@@ -140,7 +140,7 @@ function _views_slideshow_galleria_add_js($options, $id) {
 
   // Load the Galleria theme.
   if (!isset($loaded_themes[$theme_path])) {
-    drupal_add_js('Galleria.loadTheme("'. $theme_path .'")', 'inline');
+    $settings['themePath'] = $theme_path;
     $loaded_themes[$theme_path] = TRUE;
   }
 

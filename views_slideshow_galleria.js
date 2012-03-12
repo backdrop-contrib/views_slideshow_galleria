@@ -19,6 +19,8 @@
             var dataConfig = settings['dataConfig'];
             eval("settings['dataConfig'] = " + dataConfig);
           }
+          // Load the theme.
+          Galleria.loadTheme(settings['themePath']);
           // Fire up the gallery.
           $(this).galleria(settings);
         });
