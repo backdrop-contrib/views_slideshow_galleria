@@ -18,7 +18,7 @@ function template_preprocess_views_slideshow_galleria_main_frame(&$vars) {
     // Strip all images from the $rows created by the original view query.
     foreach($vars['rows'] as $id => $item) {
       preg_match('@(<\s*img\s+[^>]*>)@i', $item, $matches);
-      if ($image = $matches[1]) {
+      if (@$image = $matches[1]) {
         // If our image is in an anchor tag, use its URL.
         preg_match('@<\s*a\s+href\s*=\s*"\s*([^"]+)\s*"[^>]*>[^<]*'. preg_quote($image) .'[^<]*<\s*/a\s*>@i', $item, $urls);
         if (isset($urls[1])) {
