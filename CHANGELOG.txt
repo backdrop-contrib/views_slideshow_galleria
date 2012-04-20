@@ -1,5 +1,6 @@
 Views Slideshow: Galleria 7.x-3.x, xxxx-xx-xx
 -----------------------
+- #1529288 by sgabe | calefilm: Fixed Wrong implementation of hook_libraries_info().
 - #1517358 by sgabe | calefilm: Fixed Undefined offset error when the view is empty.
 - #1398750 by sgabe | ZuluWarrior: Fixed Galleria does not work in preview.
 
