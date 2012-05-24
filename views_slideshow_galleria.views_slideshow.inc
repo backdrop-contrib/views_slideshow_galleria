@@ -269,7 +269,7 @@ function views_slideshow_galleria_views_slideshow_slideshow_type_form(&$form, &$
   );
   $form['views_slideshow_galleria']['min_scale_ratio'] = array(
     '#type' => 'textfield',
-    '#title' => t('Max scale ratio'),
+    '#title' => t('Min scale ratio'),
     '#description' => t("Sets the minimum scale ratio for images. F.ex, if you don’t want Galleria to downscale any images, set this to 1."),
     '#default_value' => $view->options['views_slideshow_galleria']['min_scale_ratio'],
   );
@@ -485,6 +485,7 @@ function views_slideshow_galleria_views_slideshow_option_definition() {
       'carousel_speed' => array('default' => 200),
       'carousel_steps' => array('default' => 'auto'),
       'clicknext' => array('default' => FALSE),
+      'dummy' => array('default' => ''),
       'custom_theme_options' => array(
         'contains' => array(
           'custom_theme' => array('default' => ''),
@@ -510,6 +511,7 @@ function views_slideshow_galleria_views_slideshow_option_definition() {
       'lightbox_fade_speed' => array('default' => 200),
       'lightbox_transition_speed' => array('default' => 300),
       'max_scale_ratio' => array('default' => ''),
+      'min_scale_ratio' => array('default' => ''),
       'overlay_opacity' => array('default' => 0.85),
       'overlay_background' => array('default' => '#0b0b0b'),
       'pause_on_interaction' => array('default' => TRUE),

@@ -1,5 +1,6 @@
 Views Slideshow: Galleria 7.x-3.x, xxxx-xx-xx
 -----------------------
+- #1598262 by City-busz: Fixed Uninitialized settings (and a small typo).
 
 Views Slideshow: Galleria 7.x-3.0, 2012-04-26
 -----------------------
