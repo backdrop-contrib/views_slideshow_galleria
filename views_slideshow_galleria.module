@@ -29,12 +29,16 @@ function _views_slideshow_galleria_library_path() {
 
   if (!empty($library_path)) {
     // Attempt to use minified version of Galleria plugin.
-    if ($galleria_path = array_shift(glob($library_path . '/galleria*.min.js'))) {
+    $files = glob($library_path . '/galleria*.min.js');
+    if ($galleria_path = array_shift($files)) {
       return $galleria_path;
     }
     // Otherwise use non-minified version if available.
-    elseif ($galleria_path = array_shift(glob($library_path . '/galleria*.js'))) {
-      return $galleria_path;
+    else {
+      $files = glob($library_path . '/galleria*.js');
+      if ($galleria_path = array_shift($files)) {
+        return $galleria_path;
+      }
     }
   }
 
