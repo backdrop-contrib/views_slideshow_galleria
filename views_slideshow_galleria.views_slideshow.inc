@@ -309,6 +309,12 @@ function views_slideshow_galleria_views_slideshow_slideshow_type_form(&$form, &$
     '#description' => t("Galleria queues all activation clicks (next/prev & thumbnails). You can see this effect when, for example, clicking %next many times. If you don't want Galleria to queue, then uncheck the box.", array('%next' => t('next'))),
     '#default_value' => $view->options['views_slideshow_galleria']['queue'],
   );
+  $form['views_slideshow_galleria']['responsive'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Responsive'),
+    '#description' => t("Sets Galleria in responsive mode."),
+    '#default_value' => $view->options['views_slideshow_galleria']['responsive'],
+  );
   $form['views_slideshow_galleria']['show'] = array(
     '#type' => 'textfield',
     '#title' => t('Show'),
@@ -496,7 +502,7 @@ function views_slideshow_galleria_views_slideshow_option_definition() {
       'fullscreen_crop' => array('default' => ''),
       'fullscreen_double_tap' => array('default' => TRUE),
       'fullscreen_transition' => array('default' => ''),
-      'height' => array('default' => 500),
+      'height' => array('default' => 0),
       'idle_mode' => array('default' => TRUE),
       'idle_time' => array('default' => 3000),
       'idle_speed' => array('default' => 200),
@@ -518,6 +524,7 @@ function views_slideshow_galleria_views_slideshow_option_definition() {
       'popup_links' =>array('default' => FALSE),
       'preload' => array('default' => 2),
       'queue' => array('default' => TRUE),
+      'responsive' => array('default' => FALSE),
       'show' => array('default' => 0),
       'show_info' => array('default' => TRUE),
       'show_counter' => array('default' => TRUE),
@@ -532,7 +539,7 @@ function views_slideshow_galleria_views_slideshow_option_definition() {
       'touch_transition' => array('default' => ''),
       'transition' => array('default' => 'fade'),
       'transition_speed' => array('default' => 400),
-      'width' => array('default' => 500),
+      'width' => array('default' => 'auto'),
       'advanced' => array(
         'contains' => array(
           'avoid_flash_of_content' => array('default' => TRUE),

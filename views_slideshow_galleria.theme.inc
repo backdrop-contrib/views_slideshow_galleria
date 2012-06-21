@@ -93,7 +93,7 @@ function _views_slideshow_galleria_add_js($options, $id) {
     'fullscreenCrop' => (bool)$fullscreen_crop,
     'fullscreenDoubleTap' => (bool)$fullscreen_double_tap,
     'fullscreenTransition' => (bool)$fullscreen_double_tap,
-    'height' => (int)check_plain($height),
+    'height' => (float)check_plain($height),
     'idleMode' => (bool)$idle_mode,
     'idleTime' => (int)check_plain($idle_time),
     'imageCrop' => ($image_crop == 'width' || $image_crop == 'height') ? $image_crop : (bool)$image_crop,
@@ -114,6 +114,7 @@ function _views_slideshow_galleria_add_js($options, $id) {
     'popupLlinks' => (bool)$popup_links,
     'preload' => ($preload == 'all') ? 'all' : (int)$preload,
     'queue' => (bool)$queue,
+    'responsive' => (bool)$responsive,
     'show' => (int)$show,
     'showInfo' => (bool)$show_info,
     'showCounter' => (bool)$show_counter,
@@ -127,7 +128,7 @@ function _views_slideshow_galleria_add_js($options, $id) {
     'touchTransition' => check_plain($touch_transition),
     'transition' => check_plain($transition),
     'transitionSpeed' => (int)$transition_speed,
-    'width' => (int)check_plain($width),
+    'width' => ($width == 'auto') ? $width : (int)check_plain($width),
   );
 
   if ($theme == 'custom' && !empty($custom_theme) && !empty($custom_theme_path)) {
