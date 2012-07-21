@@ -45,7 +45,7 @@ function template_preprocess_views_slideshow_galleria_main_frame(&$vars) {
   $vars['classes_array'][] = 'views-slideshow-galleria-images';
   $vars['classes_array'][] = 'galleria';
   if ($vars['settings']['advanced']['avoid_flash_of_content']) {
-    $vars['classes_array'][] = 'hidden';
+    $vars['classes_array'][] = 'views-slideshow-galleria-hidden';
   }
 
   drupal_add_css(drupal_get_path('module', 'views_slideshow_galleria') .'/views_slideshow_galleria.css');
