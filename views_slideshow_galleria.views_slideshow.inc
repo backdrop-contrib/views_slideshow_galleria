@@ -321,7 +321,7 @@ function views_slideshow_galleria_views_slideshow_slideshow_type_form(&$form, &$
     '#description' => t("This defines what image index to show at first. If you have left the %history box checked, then a permalink will override this number.", array('%history' => t('History permalinks'))),
     '#default_value' => $view->options['views_slideshow_galleria']['show'],
   );
-  $form['views_slideshow_galleria']['show_iInfo'] = array(
+  $form['views_slideshow_galleria']['show_info'] = array(
     '#type' => 'checkbox',
     '#title' => t('Show info'),
     '#description' => t('Set this to false if you do not wish to display the caption.'),
