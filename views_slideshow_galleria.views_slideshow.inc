@@ -60,7 +60,6 @@ function views_slideshow_galleria_views_slideshow_slideshow_type_form(&$form, &$
     '#title' => t('Galleria options'),
     '#description' => t("These options affect the slideshow when it's in the !galleria mode. Please see the !documentation for more information.", array('!galleria' => l(t('Galleria'), 'http://galleria.io', array('attributes' => array('target' => 'blank'))), '!documentation' => l(t('documentation'), 'http://galleria.io/docs/1.2', array('attributes' => array('target' => '_blank'))))),
     '#collapsible' => TRUE,
-    '#collapsed' => !($view->options['mode'] == 'views_slideshow_galleria'),
   );
 
   $form['views_slideshow_galleria']['theme'] = array(
@@ -253,13 +252,13 @@ function views_slideshow_galleria_views_slideshow_slideshow_type_form(&$form, &$
     '#type' => 'textfield',
     '#title' => t('Lightbox fade speed'),
     '#description' => t('When calling .showLightbox() the lightbox will animate and fade the images and captions. This value controls how fast they should fade in milliseconds.'),
-    '#default_value' => $view->options['views_slideshow_galleria']['lightboxFadeSpeed'],
+    '#default_value' => $view->options['views_slideshow_galleria']['lightbox_fade_speed'],
   );
   $form['views_slideshow_galleria']['lightbox_transition_speed'] = array(
     '#type' => 'textfield',
     '#title' => t('Lightbox transition speed'),
     '#description' => t('When calling .showLightbox() the lightbox will animate the white square before displaying the image. This value controls how fast it should animate in milliseconds.'),
-    '#default_value' => $view->options['views_slideshow_galleria']['lightboxTransitionSpeed'],
+    '#default_value' => $view->options['views_slideshow_galleria']['lightbox_transition_speed'],
   );
   $form['views_slideshow_galleria']['max_scale_ratio'] = array(
     '#type' => 'textfield',

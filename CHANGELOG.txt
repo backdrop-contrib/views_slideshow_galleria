@@ -1,5 +1,6 @@
 Views Slideshow: Galleria 7.x-3.x, xxxx-xx-xx
 -----------------------
+- #1626760 by gmclelland | mattyoung: Fixed Undefined index errors.
 - #1766050 by sgabe | astanley86: Fixed Unable to hide caption.
 - #1743202 by FilmKnurd: Fixed History plugin not found.
 
