@@ -157,14 +157,14 @@ function views_slideshow_galleria_views_slideshow_slideshow_type_form(&$form, &$
     '#type' => 'checkbox',
     '#title' => t('Fullscreen crop'),
     '#description' => t('Sets how Galleria should crop when in fullscreen mode. See imageCrop for cropping options.'),
-    '#default_value' => $view->options['views_slideshow_galleria']['advanced']['fullscreen_crop'],
+    '#default_value' => $view->options['views_slideshow_galleria']['fullscreen_crop'],
     '#options' => $crop_options,
   );
   $form['views_slideshow_galleria']['fullscreen_double_tap'] = array(
     '#type' => 'checkbox',
     '#title' => t('Fullscreen double tap'),
     '#description' => t('This options listens for the double-tap event on touch devices and toggle fullscreen mode if it happens.'),
-    '#default_value' => $view->options['views_slideshow_galleria']['advanced']['fullscreen_double_tap'],
+    '#default_value' => $view->options['views_slideshow_galleria']['fullscreen_double_tap'],
   );
   $form['views_slideshow_galleria']['fullscreen_transition'] = array(
     '#type' => 'select',
