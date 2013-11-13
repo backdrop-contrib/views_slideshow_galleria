@@ -92,7 +92,7 @@ function _views_slideshow_galleria_add_js($options, $id) {
     'easing' => check_plain($easing),
     'fullscreenCrop' => (bool)$fullscreen_crop,
     'fullscreenDoubleTap' => (bool)$fullscreen_double_tap,
-    'fullscreenTransition' => (bool)$fullscreen_double_tap,
+    'fullscreenTransition' => check_plain($fullscreen_transition),
     'height' => (float)check_plain($height),
     'idleMode' => (bool)$idle_mode,
     'idleTime' => (int)check_plain($idle_time),
