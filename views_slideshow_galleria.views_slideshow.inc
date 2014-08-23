@@ -406,6 +406,12 @@ function views_slideshow_galleria_views_slideshow_slideshow_type_form(&$form, &$
     '#description' => t("The milliseconds used when applying the transition."),
     '#default_value' => $view->options['views_slideshow_galleria']['transition_speed'],
   );
+  $form['views_slideshow_galleria']['wait'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Wait'),
+    '#description' => t("Sets how long Galleria should wait when trying to extract measurements, before throwing an error. Set to 9999 for infinity."),
+    '#default_value' => $view->options['views_slideshow_galleria']['wait'],
+  );
   $form['views_slideshow_galleria']['width'] = array(
     '#type' => 'textfield',
     '#title' => t('Width'),
@@ -538,6 +544,7 @@ function views_slideshow_galleria_views_slideshow_option_definition() {
       'touch_transition' => array('default' => ''),
       'transition' => array('default' => 'fade'),
       'transition_speed' => array('default' => 400),
+      'wait' => array('default' => 5000),
       'width' => array('default' => 'auto'),
       'advanced' => array(
         'contains' => array(

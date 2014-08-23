@@ -128,6 +128,7 @@ function _views_slideshow_galleria_add_js($options, $id) {
     'touchTransition' => check_plain($touch_transition),
     'transition' => check_plain($transition),
     'transitionSpeed' => (int)$transition_speed,
+    'wait' => ($wait == 9999) ? TRUE : (int)check_plain($wait),
     'width' => ($width == 'auto') ? $width : (int)check_plain($width),
   );
 
