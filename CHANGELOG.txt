@@ -1,5 +1,6 @@
 Views Slideshow: Galleria 7.x-3.x, xxxx-xx-xx
 -----------------------
+- #1404658 by sgabe | drupov: Make sure that the file permissions are correctly set.
 - #1613088 by sgabe | dv8withn8: Fixed Could not extract a stage height from the CSS.
 - #1772212 by fschaff, gmclelland: Transition effect does not work in fullscreen theme.
 
