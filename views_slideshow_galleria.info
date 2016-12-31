@@ -1,6 +1,7 @@
 name = Views Slideshow: Galleria
 description = Provides integration between the Galleria plugin and Views Slideshow.
 backdrop = 1.x
+type = module
 package = Views
 dependencies[] = views_slideshow
 dependencies[] = libraries
