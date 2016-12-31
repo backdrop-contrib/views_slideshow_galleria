@@ -48,11 +48,11 @@ function template_preprocess_views_slideshow_galleria_main_frame(&$vars) {
     $vars['classes_array'][] = 'views-slideshow-galleria-hidden';
   }
 
-  drupal_add_css(drupal_get_path('module', 'views_slideshow_galleria') .'/views_slideshow_galleria.css');
+  backdrop_add_css(backdrop_get_path('module', 'views_slideshow_galleria') .'/views_slideshow_galleria.css');
 }
 
 /*
- * Helper function to build and pass Galleria settings to Drupal.
+ * Helper function to build and pass Galleria settings to Backdrop.
  */
 function _views_slideshow_galleria_add_js($options, $id) {
   static $loaded_themes;
@@ -71,12 +71,12 @@ function _views_slideshow_galleria_add_js($options, $id) {
   $galleria_path = _views_slideshow_galleria_library_path();
 
   // Load Galleria.
-  drupal_add_js($galleria_path, array('group' => JS_LIBRARY));
+  backdrop_add_js($galleria_path, array('group' => JS_LIBRARY));
   // Load our galleria js.
-  drupal_add_js(drupal_get_path('module', 'views_slideshow_galleria') . '/views_slideshow_galleria.js');
+  backdrop_add_js(backdrop_get_path('module', 'views_slideshow_galleria') . '/views_slideshow_galleria.js');
 
   if ($history) {
-    drupal_add_js($library_path .'/plugins/history/galleria.history.js');
+    backdrop_add_js($library_path .'/plugins/history/galleria.history.js');
   }
 
   // Process Galleria settings.
@@ -158,5 +158,5 @@ function _views_slideshow_galleria_add_js($options, $id) {
   }
 
   // Load Galleria settings.
-  drupal_add_js(array('viewsSlideshowGalleria' => array($id => $settings)), 'setting');
+  backdrop_add_js(array('viewsSlideshowGalleria' => array($id => $settings)), 'setting');
 }

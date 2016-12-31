@@ -15,7 +15,7 @@
   <?php if (!empty($title)) : ?>
     <h3><?php print $title; ?></h3>
   <?php endif; ?>
-  <div id="views-slideshow-galleria-images-<?php print $id; ?>" class="<?php print $classes; ?>">
+  <div id="views-slideshow-galleria-images-<?php print $id; ?>" class="<?php print implode(' ',$classes); ?>">
   <?php foreach ($rows as $row): ?>
     <?php print $row ."\n"; ?>
   <?php endforeach; ?>

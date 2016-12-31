@@ -36,7 +36,7 @@ function views_slideshow_galleria_views_slideshow_slideshow_info() {
  */
 function views_slideshow_galleria_views_slideshow_slideshow_type_form(&$form, &$form_state, &$view) {
   if (!$galleria_path = _views_slideshow_galleria_library_path()) {
-    drupal_set_message(t('You need to install the Galleria plugin. You can find the plugin at !url.', array('!url' => l('http://galleria.io', 'http://galleria.io', array('attributes' => array('target' => '_blank'))))), 'error');
+    backdrop_set_message(t('You need to install the Galleria plugin. You can find the plugin at !url.', array('!url' => l('http://galleria.io', 'http://galleria.io', array('attributes' => array('target' => '_blank'))))), 'error');
   }
 
   $transition_options = array(
