@@ -58,8 +58,14 @@ function views_slideshow_galleria_views_slideshow_slideshow_type_form(&$form, &$
   $form['views_slideshow_galleria'] = array(
     '#type' => 'fieldset',
     '#title' => t('Galleria options'),
-    '#description' => t("These options affect the slideshow when it's in the !galleria mode. Please see the !documentation for more information.", array('!galleria' => l(t('Galleria'), 'http://galleria.io', array('attributes' => array('target' => 'blank'))), '!documentation' => l(t('documentation'), 'http://galleria.io/docs/1.2', array('attributes' => array('target' => '_blank'))))),
+    '#description' => '',
     '#collapsible' => TRUE,
+		'#collapsed' => TRUE,
+  );
+
+	// Options introduction
+  $form['views_slideshow_galleria']['options'] = array(
+    '#markup' => '<div>&nbsp;</div><div>' . t("These options affect the slideshow when it's in the !galleria mode. Please see the !documentation for more information.", array('!galleria' => l(t('Galleria'), 'http://galleria.io', array('attributes' => array('target' => 'blank'))), '!documentation' => l(t('documentation'), 'http://docs.galleria.io/collection/19-api-reference', array('attributes' => array('target' => '_blank'))))) . '</div>',
   );
 
   $form['views_slideshow_galleria']['theme'] = array(
@@ -85,13 +91,13 @@ function views_slideshow_galleria_views_slideshow_slideshow_type_form(&$form, &$
   $form['views_slideshow_galleria']['custom_theme_options']['custom_theme'] = array(
     '#type' => 'textfield',
     '#title' => t('Custom theme'),
-    '#description' => t('Leave this blank unless you wish to override the theme used by the plugin. You should specify the name of the custom theme here, and enter its path below. See the !theme_api for how to create your own Galleria JavaScript themes.', array('!theme_api' => l(t('Galleria JavaScript theme API'), 'http://github.com/aino/galleria/blob/master/docs/theme_api.rst', array('attributes' => array('target' => '_blank'))), '%custom' => t('<Custom>'))),
+    '#description' => t('Leave this blank unless you wish to override the theme used by the plugin. You should specify the name of the custom theme here, and enter its path below. See the !theme_api for how to create your own Galleria JavaScript themes.', array('!theme_api' => l(t('Galleria JavaScript theme API'), 'http://docs.galleria.io/category/32-themes', array('attributes' => array('target' => '_blank'))), '%custom' => t('<Custom>'))),
     '#default_value' => $view->options['views_slideshow_galleria']['custom_theme_options']['custom_theme'],
   );
   $form['views_slideshow_galleria']['custom_theme_options']['custom_theme_path'] = array(
     '#type' => 'textfield',
     '#title' => t('Custom theme path'),
-    '#description' => t("Leave this blank unless you're overriding the theme. See the !theme_api for how to create your own Galleria JavaScript themes.", array('!theme_api' => l(t('Galleria JavaScript theme API'), 'http://github.com/aino/galleria/blob/master/docs/theme_api.rst', array('attributes' => array('target' => '_blank'))))),
+    '#description' => t("Leave this blank unless you're overriding the theme. See the !theme_api for how to create your own Galleria JavaScript themes.", array('!theme_api' => l(t('Galleria JavaScript theme API'), 'http://docs.galleria.io/category/32-themes', array('attributes' => array('target' => '_blank'))))),
     '#default_value' => $view->options['views_slideshow_galleria']['custom_theme_options']['custom_theme_path'],
   );
   $form['views_slideshow_galleria']['autoplay'] = array(
@@ -422,10 +428,15 @@ function views_slideshow_galleria_views_slideshow_slideshow_type_form(&$form, &$
   $form['views_slideshow_galleria']['advanced'] = array(
     '#type' => 'fieldset',
     '#title' => t('Advanced settings'),
-    '#description' => t('WARNING: Some of these settings will pass raw JavaScript to the browser, so should be used with care. See the !docs for more information on their usage.', array('!docs' => l(t('documentation'), 'http://github.com/aino/galleria/blob/master/docs/options.rst', array('attributes' => array('target' => '_blank'))))),
     '#collapsible' => TRUE,
     '#collapsed' => TRUE,
   );
+
+  // Advanced settings introduction
+  $form['views_slideshow_galleria']['advanced']['introduction'] = array(
+    '#markup' => '<div>&nbsp;</div><div>' . t('WARNING: Some of these settings will pass raw JavaScript to the browser, so should be used with care. See the !docs for more information on their usage.', array('!docs' => l(t('documentation'), 'http://docs.galleria.io/collection/19-api-reference', array('attributes' => array('target' => '_blank'))))) . '</div>',
+  );
+
   $form['views_slideshow_galleria']['advanced']['history'] = array(
     '#type' => 'checkbox',
     '#title' => t('History permalinks'),
@@ -489,7 +500,7 @@ function views_slideshow_galleria_views_slideshow_option_definition() {
   // Set our default options.
   $options['views_slideshow_galleria'] = array(
     'contains' => array(
-      'autoplay' => array('default' => FALSE),
+      'autoplay' => array('default' => TRUE),
       'autoplay_ms' => array('default' => 3000),
       'carousel' => array('default' => TRUE),
       'carousel_follow' => array('default' => TRUE),
