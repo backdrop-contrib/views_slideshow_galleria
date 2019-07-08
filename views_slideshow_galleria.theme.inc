@@ -70,10 +70,8 @@ function _views_slideshow_galleria_add_js($options, $id) {
   $module_path = backdrop_get_path('module', 'views_slideshow_galleria');
   $library_path = $module_path . '/library/galleria';
 
-  // Load Galleria library script.
-  $library = backdrop_get_library('views_slideshow_galleria', 'galleria');
-  $library_script = array_keys($library['js'])[0];
-  backdrop_add_js($library_script);
+  // Load Galleria.
+  backdrop_add_library('views_slideshow_galleria','galleria');
 
   // Load our galleria js.
   backdrop_add_js($module_path . '/views_slideshow_galleria.js');

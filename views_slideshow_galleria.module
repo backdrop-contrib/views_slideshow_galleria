@@ -17,7 +17,7 @@ function views_slideshow_galleria_library_info()
     'website' => 'http://galleria.io',
     'version' => '1.5.7',
     'js' => array(
-      $library_path . '/galleria/galleria-1.5.7.js' => array(),
+      $library_path . '/galleria/galleria-1.5.7.min.js' => array(),
     ),
   );
   return $libraries;
