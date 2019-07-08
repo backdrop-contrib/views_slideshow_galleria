@@ -67,17 +67,14 @@ function _views_slideshow_galleria_add_js($options, $id) {
   extract($advanced);
   extract($custom_theme_options);
 
-  $library_path = libraries_get_path('galleria');
-  $galleria_path = _views_slideshow_galleria_library_path();
+  $module_path = backdrop_get_path('module', 'views_slideshow_galleria');
+  $library_path = $module_path . '/library/galleria';
 
   // Load Galleria.
-  backdrop_add_js($galleria_path, array('group' => JS_LIBRARY));
-  // Load our galleria js.
-  backdrop_add_js(backdrop_get_path('module', 'views_slideshow_galleria') . '/views_slideshow_galleria.js');
+  backdrop_add_library('views_slideshow_galleria','galleria');
 
-  if ($history) {
-    backdrop_add_js($library_path .'/plugins/history/galleria.history.js');
-  }
+  // Load our galleria js.
+  backdrop_add_js($module_path . '/views_slideshow_galleria.js');
 
   // Process Galleria settings.
   $settings = array(
@@ -137,7 +134,7 @@ function _views_slideshow_galleria_add_js($options, $id) {
     $theme_path = base_path() . $custom_theme_path;
   }
   else {
-    $theme_path = base_path() . libraries_get_path('galleria') ."/themes/{$theme}/galleria.{$theme}.js";
+    $theme_path = $library_path ."/themes/{$theme}/galleria.{$theme}.js";
   }
 
   // Load the Galleria theme.

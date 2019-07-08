@@ -5,6 +5,25 @@
  *  Integrating Galleria with Views Slideshow.
  */
 
+
+/**
+ * Implements hook_library_info().
+ */
+function views_slideshow_galleria_library_info()
+{
+  $library_path = backdrop_get_path('module', 'views_slideshow_galleria') . '/library';
+  $libraries['galleria'] = array(
+    'title' => 'Galleria',
+    'website' => 'http://galleria.io',
+    'version' => '1.5.7',
+    'js' => array(
+      $library_path . '/galleria/galleria-1.5.7.min.js' => array(),
+    ),
+  );
+  return $libraries;
+}
+
+
 /**
  *  Implements hook_theme().
  */
@@ -18,29 +37,3 @@ function views_slideshow_galleria_theme() {
   );
 }
 
-/**
- * Gets the path to the Galleria library.
- *
- * @return
- *   The path to the Galleria library js file, or FALSE if not found.
- */
-function _views_slideshow_galleria_library_path() {
-  $library_path = libraries_get_path('galleria');
-
-  if (!empty($library_path)) {
-    // Attempt to use minified version of Galleria plugin.
-    $files = glob($library_path . '/galleria*.min.js');
-    if ($galleria_path = array_shift($files)) {
-      return $galleria_path;
-    }
-    // Otherwise use non-minified version if available.
-    else {
-      $files = glob($library_path . '/galleria*.js');
-      if ($galleria_path = array_shift($files)) {
-        return $galleria_path;
-      }
-    }
-  }
-
-  return FALSE;
-}

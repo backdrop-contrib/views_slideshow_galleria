@@ -12,7 +12,7 @@
  *   Associative array of slideshow type and its information.
  */
 function views_slideshow_galleria_views_slideshow_slideshow_info() {
-  $options = array(
+  return array(
     'views_slideshow_galleria' => array(
       'name' => t('Galleria'),
       'accepts' => array(
@@ -27,7 +27,6 @@ function views_slideshow_galleria_views_slideshow_slideshow_info() {
       ),
     ),
   );
-  return $options;
 }
 
 
@@ -35,9 +34,6 @@ function views_slideshow_galleria_views_slideshow_slideshow_info() {
  *  Implements hook_views_slideshow_options_form().
  */
 function views_slideshow_galleria_views_slideshow_slideshow_type_form(&$form, &$form_state, &$view) {
-  if (!$galleria_path = _views_slideshow_galleria_library_path()) {
-    backdrop_set_message(t('You need to install the Galleria plugin. You can find the plugin at !url.', array('!url' => l('http://galleria.io', 'http://galleria.io', array('attributes' => array('target' => '_blank'))))), 'error');
-  }
 
   $transition_options = array(
     'fade' => t('Fade'),
@@ -518,7 +514,7 @@ function views_slideshow_galleria_views_slideshow_option_definition() {
       'fullscreen_crop' => array('default' => ''),
       'fullscreen_double_tap' => array('default' => TRUE),
       'fullscreen_transition' => array('default' => ''),
-      'height' => array('default' => 0),
+      'height' => array('default' => 500),
       'idle_mode' => array('default' => TRUE),
       'idle_time' => array('default' => 3000),
       'idle_speed' => array('default' => 200),
@@ -532,7 +528,7 @@ function views_slideshow_galleria_views_slideshow_option_definition() {
       'lightbox' => array('default' => FALSE),
       'lightbox_fade_speed' => array('default' => 200),
       'lightbox_transition_speed' => array('default' => 300),
-      'max_scale_ratio' => array('default' => ''),
+      'max_scale_ratio' => array('default' => '1'),
       'min_scale_ratio' => array('default' => ''),
       'overlay_opacity' => array('default' => 0.85),
       'overlay_background' => array('default' => '#0b0b0b'),
