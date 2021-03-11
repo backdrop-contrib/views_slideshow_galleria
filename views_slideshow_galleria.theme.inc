@@ -68,10 +68,9 @@ function _views_slideshow_galleria_add_js($options, $id) {
   extract($custom_theme_options);
 
   $module_path = backdrop_get_path('module', 'views_slideshow_galleria');
-  $library_path = $module_path . '/library/galleria';
 
   // Load Galleria.
-  backdrop_add_library('views_slideshow_galleria','galleria');
+  backdrop_add_js($module_path . '/galleria/galleria.min.js');
 
   // Load our galleria js.
   backdrop_add_js($module_path . '/views_slideshow_galleria.js');
@@ -134,7 +133,7 @@ function _views_slideshow_galleria_add_js($options, $id) {
     $theme_path = base_path() . $custom_theme_path;
   }
   else {
-    $theme_path = $library_path ."/themes/{$theme}/galleria.{$theme}.js";
+    $theme_path = $module_path ."/galleria/themes/{$theme}/galleria.{$theme}.js";
   }
 
   // Load the Galleria theme.
