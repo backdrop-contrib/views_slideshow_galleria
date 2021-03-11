@@ -7,24 +7,6 @@
 
 
 /**
- * Implements hook_library_info().
- */
-function views_slideshow_galleria_library_info()
-{
-  $library_path = backdrop_get_path('module', 'views_slideshow_galleria') . '/library';
-  $libraries['galleria'] = array(
-    'title' => 'Galleria',
-    'website' => 'http://galleria.io',
-    'version' => '1.5.7',
-    'js' => array(
-      $library_path . '/galleria/galleria-1.5.7.min.js' => array(),
-    ),
-  );
-  return $libraries;
-}
-
-
-/**
  *  Implements hook_theme().
  */
 function views_slideshow_galleria_theme() {
