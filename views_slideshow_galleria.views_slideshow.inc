@@ -50,15 +50,6 @@ function views_slideshow_galleria_views_slideshow_slideshow_type_form(&$form, &$
     1 => t('True'),
   );
 
-  // Create the form elements for our Galleria view options.
-  $form['views_slideshow_galleria'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Galleria options'),
-    '#description' => '',
-    '#collapsible' => TRUE,
-		'#collapsed' => TRUE,
-  );
-
 	// Options introduction
   $form['views_slideshow_galleria']['options'] = array(
     '#markup' => '<div>&nbsp;</div><div>' . t("These options affect the slideshow when it's in the !galleria mode. Please see the !documentation for more information.", array('!galleria' => l(t('Galleria'), 'http://galleria.io', array('attributes' => array('target' => 'blank'))), '!documentation' => l(t('documentation'), 'http://docs.galleria.io/collection/19-api-reference', array('attributes' => array('target' => '_blank'))))) . '</div>',
